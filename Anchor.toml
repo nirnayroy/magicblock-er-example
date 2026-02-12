@@ -6,7 +6,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-er_state_account = "9ChqoFDgVmmvD6Hcajv2JppVZ7S1qPDozrTw4V7q2yLP"
+er_state_account = "48dvYxLLqfXWBUqbFMDzKps9iYjQVZ431iVrVpThoe1Q"
 
 [registry]
 url = "https://api.apr.dev"

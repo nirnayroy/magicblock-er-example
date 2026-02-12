@@ -150,6 +150,35 @@ describe("er-state-account", () => {
     console.log("\nUser Account State Updated: ", tx);
   });
 
+  it("Request Randomness and Verify Consumption!", async () => {
+    // 1. Request Randomness
+    const tx = await program.methods
+      .requestRandomness(0)
+      .accountsPartial({
+        payer: anchor.Wallet.local().publicKey,
+        userAccount: userAccount,
+        oracleQueue: new PublicKey("Cuj97ggrhhidhbu39TijNVqE74xvKJ69gDervRUXAxGh"),
+      })
+      .rpc();
+    console.log("\nRandomness Requested: ", tx);
+
+    // 2. Poll for result
+    let found = false;
+    for (let i = 0; i < 30; i++) { // Wait up to 30 seconds
+      const account = await program.account.userAccount.fetch(userAccount);
+      if (account.randomValue > 0) {
+        console.log("\nRandomness Consumed! Value: ", account.randomValue);
+        found = true;
+        break;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+    
+    if (!found) {
+        throw new Error("Randomness not consumed within timeout!");
+    }
+  });
+
   it("Close Account!", async () => {
     const tx = await program.methods
       .close()

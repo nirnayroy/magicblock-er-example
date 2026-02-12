@@ -9,7 +9,7 @@ mod instructions;
 
 use instructions::*;
 
-declare_id!("9hG187VazKdEZcYbsEcoPuPEWwkfF9HccUDTAJzuEcg3");
+declare_id!("48dvYxLLqfXWBUqbFMDzKps9iYjQVZ431iVrVpThoe1Q");
 
 #[ephemeral]
 #[program]
@@ -52,5 +52,19 @@ pub mod er_state_account {
         
         Ok(())
     }
+
+    pub fn request_randomness(ctx: Context<RequestRandomness>, client_seed: u8) -> Result<()> {
+        instructions::request_randomness::handler(ctx, client_seed)
+    }
+
+    pub fn consume_randomness(ctx: Context<ConsumeRandomness>, randomness: [u8; 32]) -> Result<()> {
+        instructions::consume_randomness::handler(ctx, randomness)
+    }
 }
+
+
+
+
+
+
 

@@ -22,7 +22,8 @@ impl<'info> InitUser<'info> {
         self.user_account.set_inner(UserAccount { 
             user: *self.user.key, 
             data: 0, 
-            bump: bumps.user_account 
+            bump: bumps.user_account,
+            random_value: 0
         });
         
         Ok(())
