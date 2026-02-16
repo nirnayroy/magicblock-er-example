@@ -9,7 +9,7 @@ mod instructions;
 
 use instructions::*;
 
-declare_id!("48dvYxLLqfXWBUqbFMDzKps9iYjQVZ431iVrVpThoe1Q");
+declare_id!("H4gaskeKRHvY7x434jmxQSopaG5PskwZ9fa4M9LtursF");
 
 #[ephemeral]
 #[program]
@@ -61,10 +61,4 @@ pub mod er_state_account {
         instructions::consume_randomness::handler(ctx, randomness)
     }
 }
-
-
-
-
-
-
 

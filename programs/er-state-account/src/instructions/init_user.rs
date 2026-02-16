@@ -9,7 +9,7 @@ pub struct InitUser<'info> {
     #[account(
         init,
         payer = user,
-        space = UserAccount::INIT_SPACE,
+        space = 8 + UserAccount::INIT_SPACE,
         seeds = [b"user", user.key().as_ref()],
         bump
     )]

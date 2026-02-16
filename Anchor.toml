@@ -5,31 +5,22 @@ package_manager = "yarn"
 resolution = true
 skip-lint = false
 
+[programs.devnet]
+er_state_account = "H4gaskeKRHvY7x434jmxQSopaG5PskwZ9fa4M9LtursF"
+
 [programs.localnet]
-er_state_account = "48dvYxLLqfXWBUqbFMDzKps9iYjQVZ431iVrVpThoe1Q"
+er_state_account = "H4gaskeKRHvY7x434jmxQSopaG5PskwZ9fa4M9LtursF"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "devnet"
+cluster = "localnet"
 wallet = "~/.config/solana/id.json"
+
+[test.validator]
+bind_address = "127.0.0.1"
+rpc_port = 18999
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
-
-# [test.validator]
-# #url = "https://api.devnet.solana.com"
-# #url = "https://api.mainnet-beta.solana.com"
-
-# # [[test.validator.clone]]
-# # address = "DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh"
-
-# # [[test.validator.clone]]
-# # address = "mAGicPQYBMvcYveUZA5F5UNNwyHvfYh5xkLS2Fr1mev"
-
-# # [[test.validator.clone]]
-# # address = "EpJnX7ueXk7fKojBymqmVuCuwyhDQsYcLVL1XMsBbvDX"
-
-# # [[test.validator.clone]]
-# # address = "7JrkjmZPprHwtuvtuGTXp9hwfGYFAQLnLeFM52kqAgXg"
